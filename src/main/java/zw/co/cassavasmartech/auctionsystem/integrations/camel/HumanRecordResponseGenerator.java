@@ -8,9 +8,6 @@ import zw.co.cassavasmartech.auctionsystem.repository.HumanBeingRepository;
 
 import java.util.List;
 
-/**
- * Created by alfred on 22 October 2020
- */
 @Component
 public class HumanRecordResponseGenerator implements Processor {
     @Autowired

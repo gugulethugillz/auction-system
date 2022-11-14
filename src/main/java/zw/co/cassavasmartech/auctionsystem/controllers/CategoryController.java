@@ -19,9 +19,6 @@ import zw.co.cassavasmartech.auctionsystem.service.ifaces.CategoryService;
 import javax.validation.Valid;
 import java.util.Optional;
 
-/**
- * Created by Tinashe & Calvin
- */
 @Slf4j
 @Controller
 @RequiredArgsConstructor

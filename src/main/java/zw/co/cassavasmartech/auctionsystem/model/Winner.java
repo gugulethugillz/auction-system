@@ -14,16 +14,11 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-/**
- * Created by alfred on 18 September 2020
- * Create a view page for a single winner, view page for multiple winners, create Winner service interface and implementation
- */
 @Data
 @NoArgsConstructor
 @Inheritance
 @Entity
-//@Table(name = "winners")
-//Komborero, Tanaka
+
 public class Winner extends BaseEntity {
 
     private String name;

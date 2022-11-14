@@ -11,9 +11,6 @@ import zw.co.cassavasmartech.auctionsystem.model.User;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-/**
- * Created by alfred on 18 September 2020
- */
 @Repository
 public interface BidRepository extends JpaRepository<Bid, Long> {
     @Query("SELECT b " +

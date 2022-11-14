@@ -17,9 +17,6 @@ import zw.co.cassavasmartech.auctionsystem.service.ifaces.PersonService;
 import java.time.OffsetDateTime;
 import java.util.Optional;
 
-/**
- * Created by alfred on 30 September 2020
- */
 @Slf4j
 @RequiredArgsConstructor
 @Component

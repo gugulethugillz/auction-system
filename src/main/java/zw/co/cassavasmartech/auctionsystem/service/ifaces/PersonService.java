@@ -5,9 +5,6 @@ import zw.co.cassavasmartech.auctionsystem.model.Person;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Created by alfred on 21 September 2020
- */
 public interface PersonService {
     Optional<Person> findById(Long id);
     Optional<Person> findByUsername(String username);

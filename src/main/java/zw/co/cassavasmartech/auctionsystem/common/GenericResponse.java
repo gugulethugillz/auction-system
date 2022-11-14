@@ -4,9 +4,6 @@ import lombok.Builder;
 import lombok.Data;
 import zw.co.cassavasmartech.auctionsystem.common.enums.ResponseCode;
 
-/**
- * Created by alfred on 08 October 2020
- */
 @Data
 @Builder
 public class GenericResponse<T> {

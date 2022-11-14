@@ -12,14 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 
-/**
- * Created by alfred on 18 September 2020
- * Create a createPage, viewPage, editPage, Controller, CRUD Frontend, create Category service interface and implementation
- */
 @Data
 @NoArgsConstructor
 @Entity
-//Tinashe, Calvin
 
 public class Category extends BaseEntity {
     private String name;

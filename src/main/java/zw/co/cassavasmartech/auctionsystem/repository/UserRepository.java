@@ -11,9 +11,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Created by alfred on 18 September 2020
- */
 @Repository
 public interface UserRepository extends PersonBaseRepository<User> {
     Optional<User> findByUsername(String username);

@@ -5,9 +5,6 @@ import zw.co.cassavasmartech.auctionsystem.model.Category;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Created by Tinashe & Calvin
- */
 public interface CategoryService {
     Optional<Category> findById(Long id);
 

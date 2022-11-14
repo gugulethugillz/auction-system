@@ -22,9 +22,6 @@ import java.time.OffsetTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
-/**
- * Created by alfred on 23 September 2020
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

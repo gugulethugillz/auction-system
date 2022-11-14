@@ -15,9 +15,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * Created by alfred on 21 September 2020
- */
 @Slf4j
 @Service
 @RequiredArgsConstructor

@@ -23,9 +23,6 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
 
-/**
- * Created by alfred on 14 September 2020
- */
 @Slf4j
 @Controller
 @RequiredArgsConstructor

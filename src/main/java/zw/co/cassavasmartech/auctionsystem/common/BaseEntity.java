@@ -8,9 +8,6 @@ import zw.co.cassavasmartech.auctionsystem.common.enums.EntityStatus;
 import javax.persistence.*;
 import java.time.OffsetDateTime;
 
-/**
- * Created by alfred on 18 September 2020
- */
 @Data
 @MappedSuperclass
 public abstract class BaseEntity {

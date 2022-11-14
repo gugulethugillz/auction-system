@@ -30,9 +30,6 @@ import java.util.UUID;
 
 import static zw.co.cassavasmartech.auctionsystem.common.Utils.getPaymentRequestHelper;
 
-/**
- * Created by alfred on 08 October 2020
- */
 @Slf4j
 @Service
 @RequiredArgsConstructor

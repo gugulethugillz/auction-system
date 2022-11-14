@@ -9,9 +9,6 @@ import zw.co.cassavasmartech.auctionsystem.model.User;
 
 import java.util.List;
 
-/**
- * Created by alfred on 18 September 2020
- */
 @NoRepositoryBean
 public interface PersonBaseRepository<T extends Person> extends JpaRepository<T, Long> {
 }

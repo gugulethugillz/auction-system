@@ -12,9 +12,6 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-/**
- * Created by alfred on 18 September 2020
- */
 @Repository
 public interface PaymentRequestRepository extends JpaRepository<PaymentRequest, Long> {
     @Query("SELECT p FROM PaymentRequest p WHERE p.user.username = :username")

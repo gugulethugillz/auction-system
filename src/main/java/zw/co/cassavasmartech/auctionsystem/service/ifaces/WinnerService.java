@@ -9,9 +9,6 @@ import zw.co.cassavasmartech.auctionsystem.repository.WinnerRepository;
 import java.util.List;
 import java.util.Optional;
 
-
-
-
 public interface WinnerService {
     WinnerRepository getRepository();
     Optional<Winner> findById(Long id);

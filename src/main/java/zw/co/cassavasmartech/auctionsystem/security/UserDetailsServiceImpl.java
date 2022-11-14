@@ -11,9 +11,6 @@ import zw.co.cassavasmartech.auctionsystem.service.ifaces.PersonService;
 
 import java.util.Optional;
 
-/**
- * Created by alfred on 22 September 2020
- */
 @Slf4j
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {

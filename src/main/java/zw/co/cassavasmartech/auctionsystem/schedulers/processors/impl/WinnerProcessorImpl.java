@@ -17,9 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by alfred on 07 October 2020
- */
 @Slf4j
 @Component
 @Transactional

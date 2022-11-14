@@ -15,15 +15,11 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-/**
- * Created by alfred on 18 September 2020
- * Create a page for viewing a list of paymentRequests, page for viewing paymentRequest details, create PaymentRequest service interface and implementation
- */
 @Data
 @NoArgsConstructor
 @Inheritance
 @Entity
-//Gerald, Vincent
+
 public class PaymentRequest extends BaseEntity {
     private BigDecimal value;
     @Column(columnDefinition = "TIMESTAMP WITH TIME ZONE")

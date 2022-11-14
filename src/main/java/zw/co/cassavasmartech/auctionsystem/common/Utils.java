@@ -16,9 +16,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.UUID;
 
-/**
- * Created by alfred on 29 September 2020
- */
 public interface Utils {
     DateTimeFormatter DATE_ONLY_FORMATTER = DateTimeFormatter.ofPattern("dd MMMM yyyy");
     DateTimeFormatter TIME_ONLY_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");

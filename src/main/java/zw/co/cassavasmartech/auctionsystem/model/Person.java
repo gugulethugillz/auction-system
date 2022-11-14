@@ -12,9 +12,6 @@ import javax.persistence.Inheritance;
 import java.time.OffsetDateTime;
 import java.util.Collection;
 
-/**
- * Created by alfred on 18 September 2020
- */
 @Data
 @NoArgsConstructor
 @Inheritance

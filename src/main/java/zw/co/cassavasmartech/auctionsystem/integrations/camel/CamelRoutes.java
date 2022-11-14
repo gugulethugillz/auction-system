@@ -6,10 +6,6 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jackson.JacksonDataFormat;
 import org.springframework.stereotype.Component;
 
-
-/**
- * Created by alfred on 22 October 2020
- */
 @Slf4j
 @Component
 @RequiredArgsConstructor

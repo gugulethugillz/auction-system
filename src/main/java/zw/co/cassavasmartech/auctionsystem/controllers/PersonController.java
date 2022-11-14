@@ -11,9 +11,6 @@ import zw.co.cassavasmartech.auctionsystem.service.ifaces.PersonService;
 
 import java.util.List;
 
-/**
- * Created by alfred on 21 September 2020
- */
 @RestController
 @Slf4j
 @RequestMapping("/people")

@@ -6,9 +6,6 @@ import zw.co.cassavasmartech.auctionsystem.model.Category;
 
 import java.util.Optional;
 
-/**
- * Created by Tinashe & Calvin
- */
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
     Optional<Category> findByName(String name);

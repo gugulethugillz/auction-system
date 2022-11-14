@@ -4,9 +4,6 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-/*
-Created by alfred on 01 Sep 2020
-*/
 @Data
 @Component
 @ConfigurationProperties(prefix="auction.system")

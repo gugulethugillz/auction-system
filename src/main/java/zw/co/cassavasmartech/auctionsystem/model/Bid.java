@@ -11,15 +11,11 @@ import javax.persistence.OneToOne;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
-/**
- * Created by alfred on 18 September 2020
- * Create CRUD for bids
- */
 @Data
 @NoArgsConstructor
 @Inheritance
 @Entity
-//Gugu, Cesias
+
 public class Bid extends BaseEntity {
     private BigDecimal value;
     private OffsetDateTime paymentDate;

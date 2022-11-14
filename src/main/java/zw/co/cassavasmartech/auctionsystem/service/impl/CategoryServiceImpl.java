@@ -10,9 +10,6 @@ import zw.co.cassavasmartech.auctionsystem.service.ifaces.CategoryService;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Created by Tinashe & Calvin
- */
 @Slf4j
 @Service
 @RequiredArgsConstructor

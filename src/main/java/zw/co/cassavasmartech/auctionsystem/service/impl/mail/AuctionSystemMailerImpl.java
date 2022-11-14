@@ -12,9 +12,6 @@ import zw.co.cassavasmartech.auctionsystem.service.ifaces.mail.AuctionSystemMail
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
-/**
- * Created by alfred on 08 October 2020
- */
 @Slf4j
 @Service
 @RequiredArgsConstructor

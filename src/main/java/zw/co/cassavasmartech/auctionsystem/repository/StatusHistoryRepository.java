@@ -11,9 +11,6 @@ import zw.co.cassavasmartech.auctionsystem.model.StatusHistory;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-/**
- * Created by alfred on 12 October 2020
- */
 @Repository
 public interface StatusHistoryRepository extends JpaRepository<StatusHistory, Long> {
 

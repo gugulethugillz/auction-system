@@ -12,9 +12,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * Created by alfred on 18 September 2020
- */
 @Data
 @NoArgsConstructor
 @Entity

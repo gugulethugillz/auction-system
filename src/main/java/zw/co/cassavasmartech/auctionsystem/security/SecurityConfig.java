@@ -10,10 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-
-/**
- * Created by alfred on 22 September 2020
- */
 @Configuration
 @RequiredArgsConstructor
 @EnableWebSecurity

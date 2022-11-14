@@ -5,9 +5,6 @@ import zw.co.cassavasmartech.auctionsystem.common.enums.EntityStatus;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-/**
- * Created by alfred on 12 October 2020
- */
 public interface AssetReportEntry {
     String getPicture();
     String getName();

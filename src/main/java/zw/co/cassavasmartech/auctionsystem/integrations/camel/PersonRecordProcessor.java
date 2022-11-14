@@ -4,9 +4,6 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by alfred on 22 October 2020
- */
 @Component
 public class PersonRecordProcessor implements Processor {
     @Override

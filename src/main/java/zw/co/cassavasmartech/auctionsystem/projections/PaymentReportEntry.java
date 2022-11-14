@@ -3,9 +3,6 @@ package zw.co.cassavasmartech.auctionsystem.projections;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-/**
- * Created by alfred on 12 October 2020
- */
 public interface PaymentReportEntry {
     LocalDateTime getDatePaid();
     BigDecimal getAmount();

@@ -15,15 +15,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Created by alfred on 18 September 2020
- * Create CRUD Front end for the assert, create Asset service and implementation
- */
 @Data
 @NoArgsConstructor
 @Inheritance
 @Entity
-//Paradzai, Onismo
+
 public class Asset extends BaseEntity {
     private String name;
     private String description;

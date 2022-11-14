@@ -25,9 +25,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Optional;
 
-/**
- * Created by alfred on 14 September 2020
- */
 @Slf4j
 @Controller
 @RequiredArgsConstructor

@@ -12,9 +12,6 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-/**
- * Created by alfred on 12 October 2020
- */
 @Data
 @NoArgsConstructor
 @Inheritance

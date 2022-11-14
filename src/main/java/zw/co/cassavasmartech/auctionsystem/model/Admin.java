@@ -10,9 +10,6 @@ import javax.persistence.Entity;
 import java.util.Arrays;
 import java.util.Collection;
 
-/**
- * Created by alfred on 18 September 2020
- */
 @Data
 @NoArgsConstructor
 @Entity

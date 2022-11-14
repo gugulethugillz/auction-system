@@ -21,9 +21,6 @@ import zw.co.cassavasmartech.auctionsystem.service.ifaces.CategoryService;
 import zw.co.cassavasmartech.auctionsystem.service.ifaces.PersonService;
 import zw.co.cassavasmartech.auctionsystem.storage.StorageService;
 
-/**
- * Created by alfred on 14 September 2020
- */
 @Slf4j
 @Controller
 @RequestMapping("/resources")
