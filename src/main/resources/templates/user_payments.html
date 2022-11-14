@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Specific Meta
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Qayima is a modern presentation HTML5 Listing & Directory Template.">
+    <meta name="keywords" content="HTML5, Template, Design, Listing, Directory, Listing Template"/>
+    <meta name="author" content="creative-wp">
+
+    <!-- Titles
+    ================================================== -->
+    <title>Auction System - Cassava Smartech</title>
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+    <link rel="apple-touch-icon" sizes="72x72" th:href="@{/images/android-icon-72x72.png}">
+    <link rel="apple-touch-icon" sizes="114x114" th:href="@{/images/apple-icon-144x144.html}">
+
+    <!-- Custom Font
+    ================================================== -->
+    <link th:href="@{../../fonts.googleapis.com/cssc02f.css?family=Poppins:300,400,500,500i,600,700,800,900&amp;display=swap}"
+          rel="stylesheet">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/simple-scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/css/trackpad-scroll-emulator.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/rangeslider.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/chartist.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery-steps.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/icomoon.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <script th:src="@{/js/modernizr.min.js}"></script>
+</head>
+
+<body>
+
+<!--********************************************************-->
+<!--********************* SITE CONTENT *********************-->
+<!--********************************************************-->
+<div class="site-content">
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                Start Site Header
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <header class="site-header default-header-style" th:replace="fragments :: header">
+
+    </header>
+    <!--~~./ end site header ~~-->
+    <!--~~~ Sticky Header ~~~-->
+    <div id="sticky-header"></div>
+    <!--~./ end sticky header ~-->
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Start Page Title Area
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <div class="page-title-area style-two pd-t-60 pd-b-45 bg-image bg-overlay"
+         style="background-image:url('/images/header/1.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+
+
+                    <div class="page-header-content">
+                        <form th:action="@{/paymentRequests}" method="get" class="advance-search-form">
+                            <div class="inner-form">
+                                <div class="advance-form-input search">
+                                    <input id="txtSearch" type="text" placeholder="Search for Payment Record"/>
+                                </div>
+                                <!--~./ search ~-->
+
+
+                                <select class="advance-form-input select-custom category">
+                                    <option>Bid</option>
+                                    <option>Asset</option>
+
+                                </select>
+                                <!--~./ location ~-->
+
+                                <div class="advance-form-input submitbtn">
+                                    <button class="btn btn-default" type="button">SEARCH</button>
+                                </div>
+                                <!--~./ location ~-->
+                            </div>
+                        </form>
+
+
+                        <!--./ advance-search-form -->
+                        <h2 class="page-title">PAYMENT RECORDS</h2>
+                    </div>
+                    <!--~~./ page-header-content ~~-->
+                </div>
+            </div>
+        </div>
+        <!--~~./ end container ~~-->
+    </div>
+    <!--~~./ end page title area ~~-->
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Start Todo Grid List Blcok
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <div class="todo-grid-list-block ml-t-60 pd-b-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="search-filter-options mrb-100">
+                        <div class="row align-items-end">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <ul class="nav nav-tabs" id="paymentsTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="pending-tab" data-toggle="tab" href="#pending" role="tab"
+                                                   aria-controls="pending" aria-selected="true">Pending Payments<i th:value="${pendingPaymentRequests.size()}"></i></a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="in-progress-tab" data-toggle="tab" href="#in-progress" role="tab"
+                                                   aria-controls="in-progress" aria-selected="true">Payments In Progress<i th:value="${processingInProgressPaymentRequests.size()}"></i></a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="successful-tab" data-toggle="tab" href="#successful" role="tab"
+                                                   aria-controls="successful" aria-selected="false">Successful Payments<i th:value="${successfulPaymentRequests.size()}"></i></a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="failed-tab" data-toggle="tab" href="#failed" role="tab"
+                                                   aria-controls="failed" aria-selected="false">Failed Payments<i th:value="${failedPaymentRequests.size()}"></i></a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="paymentsTabContent">
+                                            <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+                                                <div class="table-wrapper">
+                                                    <div class="table-title">
+                                                        <h3>Pending Payments</h3>
+                                                    </div>
+                                                    <table class="table table-striped table-hover">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Amount</th>
+                                                            <th>Date</th>
+                                                            <th>Asset</th>
+                                                            <th>Payment Method</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr th:each="paymentRequest:${pendingPaymentRequests}">
+                                                            <td th:text="${paymentRequest.value}"></td>
+                                                            <td th:text="${T(zw.co.cassavasmartech.auctionsystem.common.Utils).format(paymentRequest.date)}"></td>
+                                                            <td th:text="${paymentRequest?.asset?.name}"></td>
+                                                            <td th:text="${paymentRequest.paymentMethod}"></td>
+                                                            <td>
+                                                                <a th:href="@{/paymentRequests/findById/(id=${paymentRequest.id})}"
+                                                                   class="btn btn-default " id="detailsButton">Details</a>
+                                                                <button class="btn btn-warning payment-initiation" th:id="${paymentRequest.getId()}" th:data-mobile-number="${paymentRequest.getMobileNumber()}" data-toggle="modal" data-target="#initiatePaymentModal">Initiate</button>
+                                                            </td>
+
+                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="clearfix">
+
+                                                        <ul class="pagination">
+                                                            <li class="page-item disabled"><a href="#">Previous</a></li>
+                                                            <li class="page-item"><a href="#" class="page-link">1</a></li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="in-progress" role="tabpanel" aria-labelledby="in-progress-tab">
+                                                <div class="table-wrapper">
+                                                    <div class="table-title">
+                                                        <h3>Payments In Progress</h3>
+                                                    </div>
+                                                    <table class="table table-striped table-hover">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Amount</th>
+                                                            <th>Date</th>
+                                                            <th>Asset</th>
+                                                            <th>Payment Method</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr th:each="paymentRequest:${processingInProgressPaymentRequests}">
+                                                            <td th:text="${paymentRequest.value}"></td>
+                                                            <td th:text="${T(zw.co.cassavasmartech.auctionsystem.common.Utils).format(paymentRequest.date)}"></td>
+                                                            <td th:text="${paymentRequest?.asset?.name}"></td>
+                                                            <td th:text="${paymentRequest.paymentMethod}"></td>
+                                                            <td>
+                                                                <a th:href="@{/paymentRequests/findById/(id=${paymentRequest.id})}"
+                                                                   class="btn btn-default " id="detailsButton">Details</a>
+                                                            </td>
+
+                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="clearfix">
+
+                                                        <ul class="pagination">
+                                                            <li class="page-item disabled"><a href="#">Previous</a></li>
+                                                            <li class="page-item"><a href="#" class="page-link">1</a></li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="successful" role="tabpanel" aria-labelledby="successful-tab">
+                                                <div class="table-wrapper">
+                                                    <div class="table-title">
+                                                        <h3>Successful Payments</h3>
+                                                    </div>
+                                                    <table class="table table-striped table-hover">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Amount</th>
+                                                            <th>Date</th>
+                                                            <th>Asset</th>
+                                                            <th>Payment Method</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr th:each="paymentRequest:${successfulPaymentRequests}">
+                                                            <td th:text="${paymentRequest.value}"></td>
+                                                            <td th:text="${T(zw.co.cassavasmartech.auctionsystem.common.Utils).format(paymentRequest.date)}"></td>
+                                                            <td th:text="${paymentRequest?.asset?.name}"></td>
+                                                            <td th:text="${paymentRequest.paymentMethod}"></td>
+                                                            <td>
+                                                                <a th:href="@{/paymentRequests/findById/(id=${paymentRequest.id})}"
+                                                                   class="btn btn-default " id="detailsButton">Details</a>
+                                                            </td>
+
+                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="clearfix">
+
+                                                        <ul class="pagination">
+                                                            <li class="page-item disabled"><a href="#">Previous</a></li>
+                                                            <li class="page-item"><a href="#" class="page-link">1</a></li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="failed" role="tabpanel" aria-labelledby="failed-tab">
+
+                                                <div class="table-wrapper">
+                                                    <div class="table-title">
+                                                        <h3>Failed Payments</h3>
+                                                    </div>
+                                                    <table class="table table-striped table-hover">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Amount</th>
+                                                            <th>Date</th>
+                                                            <th>Asset</th>
+                                                            <th>Payment Method</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr th:each="paymentRequest:${failedPaymentRequests}">
+                                                            <td th:text="${paymentRequest.value}"></td>
+                                                            <td th:text="${T(zw.co.cassavasmartech.auctionsystem.common.Utils).format(paymentRequest.date)}"></td>
+                                                            <td th:text="${paymentRequest?.asset?.name}"></td>
+                                                            <td th:text="${paymentRequest.paymentMethod}"></td>
+                                                            <td>
+                                                                <a th:href="@{/paymentRequests/findById/(id=${paymentRequest.id})}"
+                                                                   class="btn btn-default " id="detailsButton">Details</a>
+                                                            </td>
+
+                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="clearfix">
+
+                                                        <ul class="pagination">
+                                                            <li class="page-item disabled"><a href="#">Previous</a></li>
+                                                            <li class="page-item"><a href="#" class="page-link">1</a></li>
+
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!--~./ search-filter-options ~-->
+            </div>
+            <!--./ col-12 -->
+        </div>
+        <!--./ row -->
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="initiatePaymentModal" tabindex="-1" role="dialog" aria-labelledby="initiatePaymentModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="initiatePaymentModalLabel">Payment Initiation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form th:action="@{/payments/paynow/initiate}" method="post">
+                        <input type="hidden" name="paymentRequestId" id="paymentInitiationRequestId">
+                        <div class="form-group">
+                            <label for="paymentMethod" class="col-form-label">Payment Method:</label>
+                            <select class="form-control" id="paymentMethod" name="paymentMethod" required>
+                                <option value="">Please select a payment method</option>
+                                <option th:value="${method.name()}" th:each="method: ${T(zw.co.cassavasmartech.auctionsystem.common.enums.PaymentMethod).values()}" th:text="${method.name()}"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-form-label">Mobile Number:</label>
+                            <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" required>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-warning float-right">Proceed with Payment</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Payment Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form th:action="@{/paymentRequests/findById}" method="put">
+                        <div class="form-group">
+                            <label class="col-form-label">Id:</label>
+                            <input type="text" class="form-control" id="idDetails" name="id" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Asset Name:</label>
+                            <input type="text" class="form-control" id="assetName" name="asset" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-form-label">Amount Paid:</label>
+                            <input type="text" class="form-control" id="amount" name="amount" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-form-label">Payment Method:</label>
+                            <input type="text" class="form-control" id="payMethod" name="method" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-form-label">Bid:</label>
+                            <input type="text" class="form-control" id="bid" name="bid" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-form-label">Paid By:</label>
+                            <input type="text" class="form-control" id="paidBy" name="user" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-form-label">Date Paid:</label>
+                            <input type="text" class="form-control" id="date" name="date" readonly>
+                        </div>
+                    </form>
+
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments :: footer"
+        class="site-footer bg-blue-violet footer-default-style footer-style-one pd-b-60">
+
+</footer><!--~./ end site footer ~-->
+</div><!--~~./ end site content ~~-->
+
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Start SITE FOOTER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<!-- All The JS Files
+================================================== -->
+
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/imagesloaded.pkgd.min.js}"></script>
+<script th:src="@{/js/jquery.validate.min.js}"></script>
+<script th:src="@{/js/jquery-validate.bootstrap-tooltip.min.js}"></script>
+<script th:src="@{/js/SyoTimer.js}"></script>
+<script th:src="@{/js/theia-sticky-sidebar.min.js}"></script>
+<script th:src="@{/js/ResizeSensor.min.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/isotope.pkgd.min.js}"></script>
+<script th:src="@{/js/packery-mode.pkgd.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/simple-scrollbar.min.js}"></script>
+<script th:src="@{/js/scrolla.jquery.min.js}"></script>
+<script th:src="@{/js/odometer.min.js}"></script>
+<script th:src="@{/js/jquery.sticky.js}"></script>
+<script th:src="@{/js/jquery.nav.js}"></script>
+<script th:src="@{/js/rangeslider.min.js}"></script>
+<script th:src="@{/js/jquery.trackpad-scroll-emulator.min.js}"></script>
+<script th:src="@{/js/jquery.datetimepicker.full.min.js}"></script>
+<script th:src="@{/js/rater.min.js}"></script>
+<script th:src="@{/js/jquery-steps.min.js}"></script>
+<script th:src="@{/js/plugins.js}"></script>
+<script th:src="@{/js/paymentRequests.js}"></script>
+<script th:src="@{/js/main.js}"></script><!-- }main-js -->
+
+<script>
+    $(".payment-initiation").click(function() {
+        let paymentRequestId = $(this).prop("id");
+        let mobileNumber = $(this).data("mobile-number");
+        console.log("Opening payment modal for request id", paymentRequestId);
+        console.log("Opening payment modal for mobile number", mobileNumber);
+        $("#paymentInitiationRequestId").val(paymentRequestId);
+        $("#mobileNumber").val(mobileNumber);
+    });
+</script>
+</body>

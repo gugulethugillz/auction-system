@@ -1,0 +1,221 @@
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- Mirrored from htmlguru.net/qayima-html/dashboard-history.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Sep 2020 10:33:26 GMT -->
+<head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Specific Meta
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Qayima is a modern presentation HTML5 Listing & Directory Template.">
+    <meta name="keywords" content="HTML5, Template, Design, Listing, Directory, Listing Template" />
+    <meta name="author" content="creative-wp">
+
+    <!-- Titles
+    ================================================== -->
+    <title>Auction System - Cassava Smartech</title>
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+    <link rel="apple-touch-icon" sizes="72x72" th:href="@{/images/android-icon-72x72.png}">
+    <link rel="apple-touch-icon" sizes="114x114" th:href="@{/images/apple-icon-144x144.html}">
+
+    <!-- Custom Font
+    ================================================== -->
+    <link th:href="@{../../fonts.googleapis.com/cssc02f.css?family=Poppins:300,400,500,500i,600,700,800,900&amp;display=swap}"
+          rel="stylesheet">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/simple-scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/css/trackpad-scroll-emulator.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/rangeslider.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/chartist.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery-steps.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/icomoon.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <script th:src="@{/js/modernizr.min.js}"></script>
+</head>
+
+<body>
+<!--********************************************************-->
+<!--********************* SITE CONTENT *********************-->
+<!--********************************************************-->
+<div class="site-content">
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Start Dashboard Site Content
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+
+
+    <div class="dashboard-site-content">
+        <div class="dashboard-menu-area" th:replace="admin/admin_fragments :: leftSidePane">
+
+        </div>
+
+        <div class="dashboard-contant-area">
+            <!--~~~~~ Start dashboard Header ~~~~~-->
+            <header class="dashboard-header" th:replace="admin/admin_fragments :: header">
+
+            </header><!--~./ end dashboard header ~-->
+
+            <!--~~~~~ Start dashboard Contant ~~~~~-->
+            <div class="dashboard-contant dashboard-history-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="dashboard-page-title">
+                                <h3 class="title">Payment List</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="dashboard-history-table">
+                                <div class="table-responsive pd-t-20 mt-15">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Amount</th>
+                                            <th>Date</th>
+                                            <th>Asset</th>
+                                            <th>Payment Method</th>
+                                            <th>Action</th>
+                                        </tr>
+
+                                        </thead>
+                                        <tbody>
+
+                                        <tr th:each = "paymentRequest:${paymentRequests}">
+
+                                            <td th:text="${paymentRequest.value}"></td>
+                                            <td th:text="${paymentRequest.date}"></td>
+                                            <td th:text="${paymentRequest.asset?.name}"></td>
+                                            <td th:text="${paymentRequest.paymentMethod}"></td>
+                                            <td>
+                                                <a th:href="@{/paymentRequests/findById/(id=${paymentRequest.id})}"  class="btn btn-default " id="detailsButton">Details</a>
+                                            </td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Payment Details</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <form th:action="@{/paymentRequests/findById}" method="put">
+                                                        <div class="form-group">
+                                                            <label class="col-form-label">Id:</label>
+                                                            <input type="text" class="form-control" id="idDetails" name="id" readonly>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-form-label">Asset Name:</label>
+                                                            <input type="text" class="form-control" id="assetName" name="asset" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="col-form-label">Amount Paid:</label>
+                                                            <input type="text" class="form-control" id="amount" name="amount" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="col-form-label">Payment Method:</label>
+                                                            <input type="text" class="form-control" id="payMethod" name="method" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="col-form-label">Bid:</label>
+                                                            <input type="text" class="form-control" id="bid" name="bid" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="col-form-label">Paid By:</label>
+                                                            <input type="text" class="form-control" id="paidBy" name="user" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label class="col-form-label">Date Paid:</label>
+                                                            <input type="text" class="form-control" id="date" name="date" readonly>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+
+
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--~./ default-form-table ~-->
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div><!--~./ end dashboard contant ~-->
+
+        </div>
+    </div><!--~./ end dashboard site content ~-->
+</div>
+<!--~./ end site content ~-->
+
+
+<!-- All The JS Files
+================================================== -->
+
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/imagesloaded.pkgd.min.js}"></script>
+<script th:src="@{/js/jquery.validate.min.js}"></script>
+<script th:src="@{/js/jquery-validate.bootstrap-tooltip.min.js}"></script>
+<script th:src="@{/js/SyoTimer.js}"></script>
+<script th:src="@{/js/theia-sticky-sidebar.min.js}"></script>
+<script th:src="@{/js/ResizeSensor.min.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/isotope.pkgd.min.js}"></script>
+<script th:src="@{/js/packery-mode.pkgd.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/simple-scrollbar.min.js}"></script>
+<script th:src="@{/js/scrolla.jquery.min.js}"></script>
+<script th:src="@{/js/odometer.min.js}"></script>
+<script th:src="@{/js/jquery.sticky.js}"></script>
+<script th:src="@{/js/jquery.nav.js}"></script>
+<script th:src="@{/js/rangeslider.min.js}"></script>
+<script th:src="@{/js/jquery.trackpad-scroll-emulator.min.js}"></script>
+<script th:src="@{/js/jquery.datetimepicker.full.min.js}"></script>
+<script th:src="@{/js/rater.min.js}"></script>
+<script th:src="@{/js/jquery-steps.min.js}"></script>
+<script th:src="@{/js/plugins.js}"></script>
+<script th:src="@{/js/paymentRequests.js}"></script>
+<script th:src="@{/js/main.js}"></script><!-- }main-js -->
+</body>
+
+<!-- Mirrored from htmlguru.net/qayima-html/dashboard-history.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Sep 2020 10:33:26 GMT -->

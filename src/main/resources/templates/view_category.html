@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Basic Page Needs
+ ================================================== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Specific Meta
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Qayima is a modern presentation HTML5 Listing & Directory Template.">
+    <meta name="keywords" content="HTML5, Template, Design, Listing, Directory, Listing Template"/>
+    <meta name="author" content="creative-wp">
+
+    <!-- Titles
+    ================================================== -->
+    <title>Auction System - Cassava Smartech</title>
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+    <link rel="apple-touch-icon" sizes="72x72" th:href="@{/images/android-icon-72x72.png}">
+    <link rel="apple-touch-icon" sizes="114x114" th:href="@{/images/apple-icon-144x144.html}">
+
+    <!-- Custom Font
+    ================================================== -->
+    <link th:href="@{../../fonts.googleapis.com/cssc02f.css?family=Poppins:300,400,500,500i,600,700,800,900&amp;display=swap}"
+          rel="stylesheet">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/simple-scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/css/trackpad-scroll-emulator.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/rangeslider.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/chartist.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery-steps.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/icomoon.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <script th:src="@{/js/modernizr.min.js}"></script>
+
+</head>
+
+<body>
+
+
+
+<div class="container my-2">
+    <!--~~~~~ Start dashboard Contant ~~~~~-->
+    <div class="dashboard-contant dashboard-history-area">
+        <div class="row">
+            <div class="col-12">
+                <div class="dashboard-page-title">
+                    <h1 class="title" th:text="${category?.name + ' Category '} + Details"> </h1>
+                </div>
+            </div>
+        </div>
+        <h4>Assets</h4>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Asset Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="asset : ${category.getAssets()}">
+                <td th:text="${asset?.name}"><span>#0000021</span></td>
+                <td> <a th:href="@{/assets/edit/{id}(id=${asset.id})}" class="btn btn-primary">Edit</a>
+                    <a th:href="@{/assets/details/{id}(id=${asset.id})}" class="btn btn-primary">Details</a>
+                    <a th:href="@{/assets/delete/{id}(id=${asset.id})}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/categories}"> Back to Categories List</a>
+    </div><!--~./ end dashboard contant ~-->
+</div>
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     Start SITE FOOTER
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<footer th:replace="fragments :: footer" class="site-footer bg-blue-violet footer-default-style footer-style-one pd-b-60">
+
+</footer><!--~./ end site footer ~-->
+
+
+<!-- All The JS Files
+================================================== -->
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/imagesloaded.pkgd.min.js}"></script>
+<script th:src="@{/js/jquery.validate.min.js}"></script>
+<script th:src="@{/js/jquery-validate.bootstrap-tooltip.min.js}"></script>
+<script th:src="@{/js/SyoTimer.js}"></script>
+<script th:src="@{/js/theia-sticky-sidebar.min.js}"></script>
+<script th:src="@{/js/ResizeSensor.min.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/isotope.pkgd.min.js}"></script>
+<script th:src="@{/js/packery-mode.pkgd.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/simple-scrollbar.min.js}"></script>
+<script th:src="@{/js/scrolla.jquery.min.js}"></script>
+<script th:src="@{/js/odometer.min.js}"></script>
+<script th:src="@{/js/jquery.sticky.js}"></script>
+<script th:src="@{/js/jquery.nav.js}"></script>
+<script th:src="@{/js/rangeslider.min.js}"></script>
+<script th:src="@{/js/jquery.trackpad-scroll-emulator.min.js}"></script>
+<script th:src="@{/js/jquery.datetimepicker.full.min.js}"></script>
+<script th:src="@{/js/rater.min.js}"></script>
+<script th:src="@{/js/jquery-steps.min.js}"></script>
+<script th:src="@{/js/plugins.js}"></script>
+<script th:src="@{/js/main.js}"></script><!-- }main-js -->
+
+</body>
+
+</html>

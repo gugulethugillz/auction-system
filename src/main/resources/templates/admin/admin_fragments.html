@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- Mirrored from htmlguru.net/qayima-html/dashboard-history.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Sep 2020 10:33:26 GMT -->
+<head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Specific Meta
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Qayima is a modern presentation HTML5 Listing & Directory Template.">
+    <meta name="keywords" content="HTML5, Template, Design, Listing, Directory, Listing Template"/>
+    <meta name="author" content="creative-wp">
+
+    <!-- Titles
+    ================================================== -->
+    <title>Qayima - Listing & Directory HTML Template</title>
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+    <link rel="apple-touch-icon" sizes="72x72" th:href="@{/images/android-icon-72x72.png}">
+    <link rel="apple-touch-icon" sizes="114x114" th:href="@{/images/apple-icon-144x144.html}">
+
+    <!-- Custom Font
+    ================================================== -->
+    <link href="../../fonts.googleapis.com/cssc02f.css?family=Poppins:300,400,500,500i,600,700,800,900&amp;display=swap"
+          rel="stylesheet">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/simple-scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/css/trackpad-scroll-emulator.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/rangeslider.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/chartist.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery-steps.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/icomoon.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <script th:src="@{/js/modernizr.min.js}"></script>
+</head>
+
+<body>
+<!--********************************************************-->
+<!--********************* SITE CONTENT *********************-->
+<!--********************************************************-->
+<div class="site-content">
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Start Dashboard Site Content
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <div class="dashboard-site-content">
+        <div class="dashboard-menu-area" th:fragment="leftSidePane">
+            <div class="btn-close"><span class="icon-cross"></span></div>
+            <div class="site-logo-block">
+                <a class="navbar-brand site-logo" th:href="@{/admin}">
+<!--                    <img th:src="@{/images/logo/bidnwin.png}" alt="logo">-->
+<!--                    <img th:src="@{/images/logo/bidnwin-2.png}" alt="logo">-->
+                    <img th:src="@{/images/logo/liveauction-2.png}" alt="logo">
+                </a>
+            </div><!--~./ site-logo-block ~-->
+            <div class="dashboard-menu-main tse-scrollable">
+                <div class="tse-content">
+                    <ul class="dashboard-menu">
+                        <li>
+                            <a th:href="@{/admin}">
+                                <span class="icon icon-params"></span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/admin/users}">
+                                <span class="icon icon-users"></span>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="active" th:href="@{/admin/categories}">
+                                <span class="icon icon-medical-history"></span>
+                                <span>All Categories</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="active" th:href="@{/admin/assets}">
+                                <span class="icon icon-medical-history"></span>
+                                <span>All Assets</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/paymentRequests/admin}">
+                                <span class="icon icon-medical-history"></span>
+                                <span>Payments</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/admin/asset_create}">
+                                <span class="icon icon-medical-history"></span>
+                                <span>Create  Asset</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/admin/category/create}">
+                                <span class="icon icon-make-group"></span>
+                                <span>Create Category</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/admin/reports/payments}">
+                                <span class="icon icon-home"></span>
+                                <span>Payment Reports</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/admin/reports/assets}">
+                                <span class="icon icon-home"></span>
+                                <span>Asset Reports</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div><!--~./ dashboard-menu-main ~-->
+            <div class="dashboard-menu-bottom">
+                <ul class="dashboard-menu">
+                    <li>
+                        <a href="dashboard-setting.html">
+                            <span class="icon icon-settings4"></span>
+                            <span>Setting</span>
+                        </a>
+                    </li>
+                    <li>
+                        <form th:action="@{/logout}" method="post">
+                            <button role="link">
+                                <span class="icon icon-logout-1"></span>
+                                <span>Logout</span>
+                            </button>
+                        </form>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dashboard-contant-area">
+            <!--~~~~~ Start dashboard Header ~~~~~-->
+            <header class="dashboard-header" th:fragment="header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="dashboard-header-mian">
+                                <div class="author-registration-area">
+                                    <div class="dropdown registration">
+
+                                        <button class="dropdown-toggle" type="button" id="authorButton">Hi <span th:text="${authUser.getFullName()}"></span>
+                                        </button>
+                                    </div>
+                                </div><!-- /.author-registration-area -->
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header><!--~./ end dashboard header ~-->
+
+            <!--~~~~~ Start dashboard Contant ~~~~~-->
+            <div class="dashboard-contant dashboard-history-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="dashboard-page-title">
+                                <h3 class="title">All Assets</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="dashboard-history-table">
+                                <div class="table-responsive pd-t-20 mt-15">
+                                    <table class="table">
+                                        <tr>
+                                        <tr>
+                                            <th>Asset Name</th>
+                                            <th>Asset Description</th>
+                                            <th>Bid Start Date</th>
+                                            <th>Bid End Date</th>
+                                            <th>Bid Start Price</th>
+                                            <th>Category</th>
+                                            <th>Options</th>
+                                        </tr>
+                                        <tr th:each="asset : ${assets}">
+                                            <td th:text="${asset.name}"></td>
+                                            <td th:text="${asset.description}"></td>
+                                            <td th:text="${asset.bidStartDate}"></td>
+                                            <td th:text="${asset.bidEndDate}"></td>
+                                            <td th:text="${asset.bidStartPrice}"></td>
+                                            <td th:text="${asset?.category?.name}"></td>
+
+                                            <td><a th:href="@{/admin/asset/edit/{id}(id=${asset.id})}"
+                                                   class="btn btn-primary">Update</a>
+                                                <a th:href="@{/admin/asset/delete/{id}(id=${asset.id})}"
+                                                   class="btn btn-danger" th:action="get">Delete</a>
+
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                            </div><!--~./ default-form-table ~-->
+                        </div>
+                    </div>
+                </div>
+            </div><!--~./ end dashboard contant ~-->
+        </div>
+    </div><!--~./ end dashboard site content ~-->
+</div>
+<!--~./ end site content ~-->
+
+
+<!-- All The JS Files
+================================================== -->
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/imagesloaded.pkgd.min.js}"></script>
+<script th:src="@{/js/jquery.validate.min.js}"></script>
+<script th:src="@{/js/jquery-validate.bootstrap-tooltip.min.js}"></script>
+<script th:src="@{/js/SyoTimer.js}"></script>
+<script th:src="@{/js/theia-sticky-sidebar.min.js}"></script>
+<script th:src="@{/js/ResizeSensor.min.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/isotope.pkgd.min.js}"></script>
+<script th:src="@{/js/packery-mode.pkgd.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/simple-scrollbar.min.js}"></script>
+<script th:src="@{/js/scrolla.jquery.min.js}"></script>
+<script th:src="@{/js/odometer.min.js}"></script>
+<script th:src="@{/js/jquery.sticky.js}"></script>
+<script th:src="@{/js/jquery.nav.js}"></script>
+<script th:src="@{/js/rangeslider.min.js}"></script>
+<script th:src="@{/js/jquery.trackpad-scroll-emulator.min.js}"></script>
+<script th:src="@{/js/jquery.datetimepicker.full.min.js}"></script>
+<script th:src="@{/js/rater.min.js}"></script>
+<script th:src="@{/js/jquery-steps.min.js}"></script>
+<script th:src="@{/js/plugins.js}"></script>
+<script th:src="@{/js/main.js}"></script><!-- main-js -->
+</body>
+
+<!-- Mirrored from htmlguru.net/qayima-html/dashboard-history.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Sep 2020 10:33:26 GMT -->
+</html>

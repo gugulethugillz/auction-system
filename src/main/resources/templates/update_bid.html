@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form method="post" class="contact-form hg-form-email" th:object="${bidForm}" th:action="@{/bids/update/{id}(id=${bid.id})}">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <input name="name" type="text"  th:field="*{value}"  required/>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="form-group">
+                <input name="name" type="hidden"  th:field="*{assetId}"  required/>
+            </div>
+        </div>
+
+
+        <div class="form-btn-group">
+            <button type="submit" class="btn btn-success">
+                Update
+            </button>
+
+        </div>
+
+    </div><!-- /.row -->
+</form><!-- /.contact-form -->
+
+
+
+</form>
+</body>
+</html>

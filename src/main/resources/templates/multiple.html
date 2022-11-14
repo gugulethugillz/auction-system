@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en" xmlns:="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- Mirrored from htmlguru.net/qayima-html/dashboard-history.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Sep 2020 10:33:26 GMT -->
+<head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Specific Meta
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Qayima is a modern presentation HTML5 Listing & Directory Template.">
+    <meta name="keywords" content="HTML5, Template, Design, Listing, Directory, Listing Template" />
+    <meta name="author" content="creative-wp">
+
+    <!-- Titles
+    ================================================== -->
+    <title>Qayima - Listing & Directory HTML Template</title>
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" th:href="@{/images/favicon.icon}">
+    <link rel="apple-touch-icon" sizes="72x72" th:href="@{/images/android-icon-72x72.png}">
+    <link rel="apple-touch-icon" sizes="114x114" th:href="@{/images/apple-icon-144x144.html}">
+
+    <!-- Custom Font
+    ================================================== -->
+    <link href="../../fonts.googleapis.com/cssc02f.css?family=Poppins:300,400,500,500i,600,700,800,900&amp;display=swap" rel="stylesheet">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/simple-scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/css/trackpad-scroll-emulator.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/rangeslider.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/chartist.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery-steps.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/icomoon.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <script th:src="@{/js/modernizr.min.js}"></script>
+</head>
+
+<body>
+<!--********************************************************-->
+<!--********************* SITE CONTENT *********************-->
+<!--********************************************************-->
+<div class="site-content">
+    <!--~~~~~ Start dashboard Contant ~~~~~-->
+    <div class="dashboard-contant dashboard-history-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-area style-two pd-t-60 pd-b-45 bg-image bg-overlay" style="background-image:url('/images/header/1.jpg')">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="page-header-content">
+                                        <form action="#}" class="advance-search-form">
+                                            <div class="inner-form">
+                                                <div class="advance-form-input search">
+                                                    <input id="search" type="text" placeholder="Search a Winner?" />
+                                                </div>
+                                                <!--~./ search ~-->
+                                                <select class="advance-form-input select-custom category">
+                                                    <option>Search Category</option>
+                                                    <option>Username</option>
+                                                    <option>User Id</option>
+                                                </select>
+                                                <!--~./ location ~-->
+                                                <select class="advance-form-input select-custom location">
+                                                    <option>Department </option>
+                                                    <option>IS-Technical</option>
+                                                    <option>Marketing</option>
+                                                    <option>Finance</option>
+                                                    <option>Accounting</option>
+                                                    <!-- <option>Human Resources</option> -->
+                                                </select>
+                                                <!--~./ location ~-->
+                                                <div class="advance-form-input submitbtn">
+                                                    <button class="btn btn-default" type="button">SEARCH NOW</button>
+                                                </div>
+                                                <!--~./ location ~-->
+                                            </div>
+                                        </form>
+                                        <!--./ advance-search-form -->
+                                        <h2 class="page-title">Winners Listing Grid</h2>
+                                    </div>
+                                    <!--~~./ page-header-content ~~-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--~~./ end container ~~-->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="dashboard-history-table">
+                        <div class="table-responsive pd-t-20 mt-15">
+                            <table class="table">
+                                <tr>
+                                    <th>Winer ID</th>
+                                    <th>Created By</th>
+                                    <th>BidWinner</th>
+                                </tr>
+                                <tr th:each="multiple : ${winners}">
+                                    <td th:text="${multiple.id}"></td>
+                                    <td th:text="${multiple.createdBy}"></td>
+                                    <td th:text="${multiple.name}"></td>
+                                    <td><a th:href="@{winner/{id}(id=${multiple.id})}"
+                                           class="btn btn-primary">View Winner </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div><!--~./ default-form-table ~-->
+                </div>
+            </div>
+        </div>
+    </div><!--~./ end dashboard contant ~-->
+</div>
+</div><!--~./ end dashboard site content ~-->
+</div>
+<div>
+    <nav class="paging-navigation pagination-center pd-t-70">
+        <ul class="nav-links">
+            <li class="nav-previous">
+
+                <a th:href="@{#}">Previous</a>
+            </li>
+            <li class="active"><a th:href="@{#}">1</a></li>
+            <li><a th:href="@{#}" class="page-numbers">2</a></li>
+            <li><a th:href="@{#}" class="page-numbers">3</a></li>
+            <li><a th:href="@{#}" class="page-numbers">4</a></li>
+            <li class="nav-next">
+                <a th:href="@{#}">Next</a>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+<!--~./ end site content ~-->
+
+
+<!-- All The JS Files
+================================================== -->
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/imagesloaded.pkgd.min.js}"></script>
+<script th:src="@{/js/jquery.validate.min.js}"></script>
+<script th:src="@{/js/jquery-validate.bootstrap-tooltip.min.js}"></script>
+<script th:src="@{/js/SyoTimer.js}"></script>
+<script th:src="@{/js/theia-sticky-sidebar.min.js}"></script>
+<script th:src="@{/js/ResizeSensor.min.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/isotope.pkgd.min.js}"></script>
+<script th:src="@{/js/packery-mode.pkgd.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/simple-scrollbar.min.js}"></script>
+<script th:src="@{/js/scrolla.jquery.min.js}"></script>
+<script th:src="@{/js/odometer.min.js}"></script>
+<script th:src="@{/js/jquery.sticky.js}"></script>
+<script th:src="@{/js/jquery.nav.js}"></script>
+<script th:src="@{/js/rangeslider.min.js}"></script>
+<script th:src="@{/js/jquery.trackpad-scroll-emulator.min.js}"></script>
+<script th:src="@{/js/jquery.datetimepicker.full.min.js}"></script>
+<script th:src="@{/js/rater.min.js}"></script>
+<script th:src="@{/js/jquery-steps.min.js}"></script>
+<script th:src="@{/js/plugins.js}"></script>
+<script th:src="@{/js/main.js}"></script><!-- main-js -->
+</body>
+
+<!-- Mirrored from htmlguru.net/qayima-html/dashboard-history.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Sep 2020 10:33:26 GMT -->
+</html>

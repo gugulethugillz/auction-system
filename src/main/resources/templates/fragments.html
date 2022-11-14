@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+
+
+<!-- Basic Page Needs
+================================================== -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Specific Meta
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Qayima is a modern presentation HTML5 Listing & Directory Template.">
+<meta name="keywords" content="HTML5, Template, Design, Listing, Directory, Listing Template"/>
+<meta name="author" content="creative-wp">
+
+<!-- Titles
+================================================== -->
+<title>Auction System - Cassava Smartech</title>
+
+
+<!-- Favicons
+================================================== -->
+<link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+<link rel="apple-touch-icon" sizes="72x72" th:href="@{/images/android-icon-72x72.png}">
+<link rel="apple-touch-icon" sizes="114x114" th:href="@{/images/apple-icon-144x144.html}">
+
+<!-- Custom Font
+================================================== -->
+<link th:href="@{../../fonts.googleapis.com/cssc02f.css?family=Poppins:300,400,500,500i,600,700,800,900&amp;display=swap}"
+      rel="stylesheet">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+<link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+<link rel="stylesheet" th:href="@{/css/simple-scrollbar.css}">
+<link rel="stylesheet" th:href="@{/css/trackpad-scroll-emulator.css}">
+<link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+<link rel="stylesheet" th:href="@{/css/rangeslider.min.css}">
+<link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+<link rel="stylesheet" th:href="@{/css/chartist.min.css}">
+<link rel="stylesheet" th:href="@{/css/jquery-steps.css}">
+<link rel="stylesheet" th:href="@{/css/fontawesome.all.min.css}">
+<link rel="stylesheet" th:href="@{/css/icomoon.css}">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+<script th:src="@{/js/modernizr.min.js}"></script>
+</head>
+
+<body>
+<!--********************************************************-->
+<!--********************* SITE CONTENT *********************-->
+<!--********************************************************-->
+<div class="site-content">
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Start Site Header
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <header class="site-header default-header-style" th:fragment="header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <div class="navigation-area">
+                        <div class="header-navigation-left">
+                            <!-- Site Branding -->
+                            <div class="site-branding">
+                                <a th:href="@{/}">
+                                    <img th:src="@{/images/logo/bidnwin.png}" alt="Site Logo"/>
+                                </a>
+                            </div><!-- /.site-branding -->
+                            <div class="header-search-form">
+                                <form action="#">
+                                    <input type="search" placeholder="What are you looking for?">
+                                    <button type="submit"><span class="icon-search32"></span></button>
+                                </form>
+                            </div><!-- /.header-search-form -->
+                            <div class="mobile-element-meta">
+                                <div class="search-wrap">
+                                    <div class="search-btn">
+                                        <span class="icon-search32"></span>
+                                    </div>
+                                    <div class="search-form">
+                                        <form action="#">
+                                            <input type="search" placeholder="Search">
+                                            <button type="submit"><span class="icon-search32"></span></button>
+                                        </form>
+                                    </div>
+                                </div><!--~./ search-wrap ~-->
+                                <div class="mobile-user-registration"></div>
+                            </div>
+                        </div><!-- /.header-navigation-left -->
+
+                        <div class="header-navigation-right-area">
+                            <!-- Site Navigation -->
+                            <div class="site-navigation">
+                                <div class="hamburger-menus">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <nav class="navigation">
+                                    <div class="overlaybg"></div><!-- /.overlaybg -->
+                                    <!-- Main Menu -->
+                                    <div class="menu-wrapper">
+                                        <div class="menu-content">
+                                            <ul class="mainmenu">
+                                                <li>
+                                                    <a class="active" href="#">Home</a>
+                                                </li>
+                                                <li class="megamenu">
+                                                    <a href="#">Categories</a>
+                                                    <div class="sub-menu megamenu-main megamenu-carousel carousel-nav-text owl-carousel">
+                                                        <a href="#" class="cat-item cat-nightlife" th:each="category: ${categories}">
+                                                            <div class="cat-content">
+                                                                <div class="cat-content-inner">
+                                                                    <p class="listing-no" th:text="${category.getAssets().size()}"></p>
+                                                                    <h3 class="title" th:text="${category.getName()}"></h3><!--./ title -->
+                                                                </div><!--./ cat-content-inner -->
+                                                            </div><!--./ cat-content -->
+                                                            <div class="cat-content-hover">
+                                                                <div class="content-hover-inner">
+                                                                    <div class="icon">
+                                                                        <span class="icon-cafe"></span>
+                                                                    </div>
+                                                                    <h3 class="title" th:text="${category.getName()}"></h3><!--./ title -->
+                                                                </div>
+                                                            </div><!--./ cat-content-hover -->
+                                                        </a>
+                                                    </div><!--/.mega-menu-content-->
+                                                </li>
+                                                <li>
+                                                    <a href="#">Bids</a>
+                                                    <ul class="sub-menu">
+                                                        <li><a th:href="@{/bids/}">All</a></li>
+                                                        <li><a th:href="@{/bids/active}">Active</a></li>
+
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a th:href="@{/payments}">Payments</a>
+                                                </li>
+                                            </ul> <!-- /.menu-list -->
+                                        </div> <!-- /.hours-content-->
+                                    </div><!-- /.menu-wrapper -->
+                                </nav>
+                            </div><!-- /.site-navigation -->
+
+                            <div class="header-navigation-right">
+                                <div class="user-registration-area">
+                                    <a class="user-reg-btn" href="#">
+                                        <span class="icon icon-user-1"></span>
+                                        <span class="text" th:text="${authUser.getFullName()}"></span>
+                                    </a>
+                                    <div class="user-register-area">
+                                        <!--~~~ Start User Signin Area ~~~--><div class="user-register-area">
+                                        <!--~~~ Start User Signin Area ~~~-->
+                                        <div class="user-signin-area">
+                                            <div class="form-content">
+                                                <div class="form-content-signin">
+                                                    <h3 sec:authentication="name"></h3>
+                                                    <form class="default-form signin-form" th:action="@{/logout}" method="post">
+
+
+                                                        <div class="form-btn-group">
+                                                            <button type="submit" class="btn btn-default btn-black">
+                                                                Login Out
+                                                                <span class="fas fa-caret-right"></span>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div><!--~./ end user signin area ~-->
+                                    </div>
+
+                                        <!--~~~ Start User Signup Area ~~~-->
+                                    </div>
+                                </div><!--~./ user-registration-area ~-->
+                                <div class="add-listing-area">
+                                    <a class="btn btn-default btn-black" href="dashboard-add-listing.html">add listing
+                                        <span class="fas fa-caret-right"></span></a>
+                                </div><!--~./ add-listing-area ~-->
+                            </div><!--~./ header-navigation-right ~-->
+                        </div><!-- /.header-navigation-right-area -->
+                    </div><!-- /.navigation-area -->
+                </div><!-- /.col-12 -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </header><!--~~./ end site header ~~-->
+    <!--~~~ Sticky Header ~~~-->
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Start Page Title Area
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <div class="page-title-area pd-t-60 pd-b-45 bg-image bg-overlay"
+         style="background-image:url('assets/images/header/1.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-header-content">
+                        <form action="#" class="advance-search-form">
+                            <div class="inner-form">
+                                <div class="advance-form-input search">
+                                    <input id="search" type="text" placeholder="What are you looking for?"/>
+                                </div><!--~./ search ~-->
+                                <div class="advance-form-input submitbtn">
+                                    <button class="btn btn-default" type="button">SEARCH</button>
+                                </div><!--~./ location ~-->
+                            </div>
+                        </form><!--./ advance-search-form -->
+                        <h2 class="page-title">Assets</h2>
+                    </div><!--~~./ page-header-content ~~-->
+                </div>
+            </div>
+        </div><!--~~./ end container ~~-->
+    </div><!--~~./ end page title area ~~-->
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Start User Profile List Blcok
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <div class="user-profile-list-block ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="user-profile-info-area mrb-65">
+                        <div class="profile-info-right">
+                            <div class="info">
+                                <h3 class="user-name">All Assets</h3>
+                            </div>
+                        </div><!--./ profile-info-right -->
+                    </div><!--./ user-profile-info-area -->
+                </div><!--./ col-12 -->
+            </div><!--./ row -->
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="user-profile-list-todo">
+                        <div class="small-title">
+                            <h3 class="heading">Categories</h3>
+                        </div><!--~./ small-title ~-->
+                        <!--~~~~~ Start Todo Item ~~~~~-->
+                        <div class="todo-item todo-item-list">
+                            <small class="p-2">
+                                <a th:href="@{/listing-details.html}">All Assets</a>
+                            </small><!--./ todo-content -->
+                        </div><!--~./ end todo item ~-->
+                        <div class="todo-item todo-item-list">
+                            <small class="p-2">
+                                <a th:href="@{/listing-details.html}">Furniture</a>
+                            </small><!--./ todo-content -->
+                        </div><!--~./ end todo item ~-->
+                        <div class="todo-item todo-item-list">
+                            <small class="p-2">
+                                <a th:href="@{/listing-details.html}">Computer</a>
+                            </small><!--./ todo-content -->
+                        </div><!--~./ end todo item ~-->
+                        <div class="todo-item todo-item-list">
+                            <small class="p-2">
+                                <a th:href="@{/listing-details.html}">Vehicle</a>
+                            </small><!--./ todo-content -->
+                        </div><!--~./ end todo item ~-->
+                    </div>
+                </div>
+                <!--~~~~~ Start sidebar ~~~~~-->
+                <div class="col-lg-8">
+                    <div class="sidebar-todos mrt-md-60">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row ">
+
+                                    <!--~~~~~ Start Todo Item ~~~~~-->
+                                    <div class="col-lg-4 col-md-6" th:each="asset : ${assets}">
+                                        <a  th:href="@{|/assets/${asset.getId()}|}">
+                                            <div class="todo-item">
+                                                <div class="todo-thumbnail-area">
+                                                    <figure class="item-thumb">
+                                                        <img th:src="@{/images/todo/1.jpg}" alt="Thmubnail">
+                                                    </figure><!--./ item-thumb -->
+                                                </div><!--./ todo-overlay-info -->
+                                                <div class="todo-content">
+                                                    <h3 class="title" th:text="${asset.name}"></h3>
+                                                    <div class="todo-price-status">
+                                                        <div class="todo-price" th:text="${asset.bidStartPrice}"></div>
+                                                    </div><!--./ todo-footer -->
+                                                    <div class="todo-meta">
+                                                        <div class="todo-location" th:text="${asset.description}">
+                                                        </div><!--./ todo-location -->
+                                                        <button type="button" class="btn btn-warning" data-toggle="modal"
+                                                                data-target="#exampleModal" data-whatever="@mdo">Place Bid
+                                                        </button>
+                                                    </div><!--./ todo-meta -->
+                                                </div><!--./ todo-content -->
+                                            </div>
+                                        </a>
+                                    </div><!--~./ end todo item ~-->
+
+
+                                    <!-- modal-->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Place Bid</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <label for="recipient-name" class="col-form-label">Bid
+                                                                Price:</label>
+                                                            <input type="number" class="form-control"
+                                                                   id="recipient-name">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--modal-->
+                                </div><!--./ col-12 -->
+                            </div><!--./ row -->
+                            <!--~~~~~ Start Paging Navigation ~~~~~-->
+                            <nav class="paging-navigation pagination-center pd-t-70 pd-b-70">
+                                <ul class="nav-links">
+                                    <li class="nav-previous"> <!-- disabled class add when no pagination -->
+                                        <a href="#">Previous</a>
+                                    </li>
+                                    <li><a href="#">1</a></li>
+                                    <li class="active"><a href="#" class="page-numbers">2</a></li>
+                                    <li><a href="#" class="page-numbers">3</a></li>
+                                    <li><a href="#" class="page-numbers">4</a></li>
+                                    <li class="nav-next">
+                                        <a href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </nav><!--~./ end paging navigation ~-->
+
+                        </div>
+                    </div><!--~./ end sidebar ~-->
+                </div><!--./ row -->
+            </div><!--./ container -->
+        </div><!--~./ end user profile list block ~-->
+
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            Start Work brand Block
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            Start SITE FOOTER
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+        <footer class="site-footer bg-blue-violet footer-default-style footer-style-two pd-t-100">
+
+            <div class="footer-content-area style-two ptb-100">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3">
+                            <div class="footer-logo">
+                                <a href="#"><img th:src="@{/images/logo/bidnwin.png}" alt="Logo"></a>
+                            </div><!-- /.footer-logo -->
+                        </div><!--~./ col-lg-3 ~-->
+                        <div class="col-lg-3">
+                            <ul class="footer-social">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                            </ul><!-- /.footer-social -->
+                        </div><!--~./ col-lg-3 ~-->
+                        <div class="col-lg-6">
+                            <ul class="footer-menu">
+                                <li><a href="#">Join Us</a></li>
+                                <li><a href="#">Privcay Policy</a></li>
+                                <li><a href="#">Support Center</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul><!-- /.footer-menu -->
+                        </div><!--~./ col-lg-6 ~-->
+                    </div>
+                </div>
+            </div><!--~./ end footer content area ~-->
+        </footer><!--~./ end site footer ~-->
+    </div><!--~~./ end site content ~~-->
+</div>
+    <!-- All The JS Files
+     ================================================== -->
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/imagesloaded.pkgd.min.js}"></script>
+    <script th:src="@{/js/jquery.validate.min.js}"></script>
+    <script th:src="@{/s/jquery-validate.bootstrap-tooltip.min.js}"></script>
+    <script th:src="@{/js/SyoTimer.js}"></script>
+    <script th:src="@{/js/theia-sticky-sidebar.min.js}"></script>
+    <script th:src="@{/js/ResizeSensor.min.js}"></script>
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
+    <script th:src="@{/js/isotope.pkgd.min.js}"></script>
+    <script th:src="@{/js/packery-mode.pkgd.min.js}"></script>
+    <script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+    <script th:src="@{/s/simple-scrollbar.min.js}"></script>
+    <script th:src="@{/js/scrolla.jquery.min.js}"></script>
+    <script th:src="@{/js/odometer.min.js}"></script>
+    <script th:src="@{/js/jquery.sticky.js}"></script>
+    <script th:src="@{/js/jquery.nav.js}"></script>
+    <script th:src="@{/js/rangeslider.min.js}"></script>
+    <script th:src="@{/js/jquery.trackpad-scroll-emulator.min.js}"></script>
+    <script th:src="@{/js/jquery.datetimepicker.full.min.js}"></script>
+    <script th:src="@{/js/rater.min.js}"></script>
+    <script th:src="@{/js/jquery-steps.min.js}"></script>
+    <script th:src="@{/js/plugins.js}"></script>
+    <script th:src="@{/js/main.js}"></script><!-- main-js -->
+</body>
+
+<!-- Mirrored from htmlguru.net/qayima-html/user-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Sep 2020 10:33:26 GMT -->
+</html>

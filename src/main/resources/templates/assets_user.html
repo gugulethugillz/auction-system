@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Specific Meta
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Qayima is a modern presentation HTML5 Listing & Directory Template.">
+    <meta name="keywords" content="HTML5, Template, Design, Listing, Directory, Listing Template"/>
+    <meta name="author" content="creative-wp">
+
+    <!-- Titles
+    ================================================== -->
+    <title>Auction System - Cassava Smartech</title>
+
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+    <link rel="apple-touch-icon" sizes="72x72" th:href="@{/images/android-icon-72x72.png}">
+    <link rel="apple-touch-icon" sizes="114x114" th:href="@{/images/apple-icon-144x144.html}">
+
+    <!-- Custom Font
+    ================================================== -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,500&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/simple-scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/css/trackpad-scroll-emulator.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/rangeslider.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/chartist.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery-steps.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/icomoon.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery-countdown/jquery.countdown.css}">
+
+    <script th:src="@{/js/modernizr.min.js}"></script>
+</head>
+
+<body>
+<!--********************************************************-->
+<!--********************* SITE CONTENT *********************-->
+<!--********************************************************-->
+<div class="site-content">
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Start Site Header
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <header class="site-header default-header-style" th:replace="fragments :: header">
+
+    </header><!--~~./ end site header ~~-->
+    <!--~~~ Sticky Header ~~~-->
+    <div id="sticky-header"></div><!--~./ end sticky header ~-->
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Start Page Title Area
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <div class="page-title-area pd-t-60 pd-b-45 bg-image bg-overlay"
+         style="background-image:url('assets/images/header/1.jpg')">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="alert alert-warning" th:if="${info}" th:text="${info}">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-header-content">
+                        <form th:action="@{/assets}" class="advance-search-form">
+                            <div class="inner-form">
+                                <div class="advance-form-input search">
+                                    <input  th:name="keyWord" type="text" placeholder="What are you looking for?"/>
+                                </div><!--~./ search ~-->
+                                <div class="advance-form-input submitbtn">
+                                    <button class="btn btn-default"  type="submit">SEARCH</button>
+                                </div><!--~./ location ~-->
+                            </div>
+                        </form><!--./ advance-search-form -->
+                        <h2 class="page-title">Assets</h2>
+                    </div><!--~~./ page-header-content ~~-->
+                </div>
+            </div>
+        </div><!--~~./ end container ~~-->
+    </div><!--~~./ end page title area ~~-->
+
+
+    <div class="user-profile-list-block ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="user-profile-info-area mrb-65">
+                        <div class="profile-info-right">
+                            <div class="info">
+                                <h3 class="user-name">Assets</h3>
+                            </div>
+                        </div><!--./ profile-info-right -->
+                    </div><!--./ user-profile-info-area -->
+                </div><!--./ col-12 -->
+            </div><!--./ row -->
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="user-profile-list-todo">
+                                <div class="small-title">
+                                    <h3 class="heading">Categories</h3>
+                                </div><!--~./ small-title ~-->
+
+                                <div class="todo-item todo-item-list">
+                                    <small class="p-2">
+                                        <a th:href="@{/assets/}">All Assets</a>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="user-profile-list-todo" style="max-height: 40vh; overflow-y: scroll">
+                                <div class="todo-item todo-item-list" th:each="category: ${categories}">
+                                    <small class="p-2">
+                                        <a th:href="@{|/assets/category/${category.getId()}|}" th:text="${category.getName()}"></a>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--~~~~~ Start sidebar ~~~~~-->
+                <div class="col-lg-9">
+                    <div class="sidebar-todos mrt-md-60">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row ">
+
+                                    <!--~~~~~ Start Todo Item ~~~~~-->
+                                    <div class="col-lg-4 col-md-6 col-sm-12" th:each="asset : ${assets}">
+                                        <a th:href="@{|/assets/${asset.getId()}|}">
+                                            <div class="todo-item">
+                                                <div class="todo-thumbnail-area">
+                                                    <figure class="item-thumb">
+                                                        <img th:src="@{'/resources/images/' + ${asset.getDefaultDisplayImage()}}" th:alt="${asset?.description}">
+                                                    </figure><!--./ item-thumb -->
+                                                </div><!--./ todo-overlay-info -->
+                                                <div class="todo-content">
+                                                    <h3 class="title" th:text="${asset.name}"></h3>
+                                                    <div class="todo-price-status">
+                                                        <div class="todo-price" th:text="${asset.getLatestPrice()}"></div>
+                                                    </div><!--./ todo-footer -->
+                                                    <div class="todo-meta">
+                                                        <div class="bid-timer" th:data-remaining-time="${asset.getFormattedBidEndDate()}"></div>
+                                                        <div class="todo-location" th:text="${asset.description}">
+                                                        </div><!--./ todo-location -->
+                                                        <button type="button" class="btn btn-warning"
+                                                                data-toggle="modal"
+                                                                data-target="#exampleModal" data-whatever="@mdo">Place
+                                                            Bid
+                                                        </button>
+                                                    </div><!--./ todo-meta -->
+                                                </div><!--./ todo-content -->
+                                            </div>
+                                        </a>
+                                    </div><!--~./ end todo item ~-->
+
+
+                                    <!-- modal-->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Place Bid</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <label for="recipient-name" class="col-form-label">Bid
+                                                                Price:</label>
+                                                            <input type="number" class="form-control"
+                                                                   id="recipient-name">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--modal-->
+                                </div><!--./ col-12 -->
+                            </div><!--./ row -->
+                            <!--~~~~~ Start Paging Navigation ~~~~~-->
+                            <nav class="paging-navigation pagination-center pd-t-70 pd-b-70">
+                                <ul class="nav-links">
+                                    <li class="nav-previous"> <!-- disabled class add when no pagination -->
+                                        <a href="#">Previous</a>
+                                    </li>
+                                    <li><a href="#">1</a></li>
+                                    <li class="active"><a href="#" class="page-numbers">2</a></li>
+                                    <li><a href="#" class="page-numbers">3</a></li>
+                                    <li><a href="#" class="page-numbers">4</a></li>
+                                    <li class="nav-next">
+                                        <a href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </nav><!--~./ end paging navigation ~-->
+
+                        </div>
+                    </div><!--~./ end sidebar ~-->
+                </div><!--./ row -->
+            </div><!--./ container -->
+        </div><!--~./ end user profile list block ~-->
+
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            Start Work brand Block
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+        <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            Start SITE FOOTER
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+        <footer th:replace="fragments :: footer"
+                class="site-footer bg-blue-violet footer-default-style footer-style-one pd-b-60">
+
+        </footer><!--~./ end site footer ~-->
+    </div><!--~~./ end site content ~~-->
+</div>
+<!-- All The JS Files
+ ================================================== -->
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/imagesloaded.pkgd.min.js}"></script>
+<script th:src="@{/js/jquery.validate.min.js}"></script>
+<script th:src="@{/s/jquery-validate.bootstrap-tooltip.min.js}"></script>
+<script th:src="@{/js/SyoTimer.js}"></script>
+<script th:src="@{/js/theia-sticky-sidebar.min.js}"></script>
+<script th:src="@{/js/ResizeSensor.min.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/isotope.pkgd.min.js}"></script>
+<script th:src="@{/js/packery-mode.pkgd.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/s/simple-scrollbar.min.js}"></script>
+<script th:src="@{/js/scrolla.jquery.min.js}"></script>
+<script th:src="@{/js/odometer.min.js}"></script>
+<script th:src="@{/js/jquery.sticky.js}"></script>
+<script th:src="@{/js/jquery.nav.js}"></script>
+<script th:src="@{/js/rangeslider.min.js}"></script>
+<script th:src="@{/js/jquery.trackpad-scroll-emulator.min.js}"></script>
+<script th:src="@{/js/jquery.datetimepicker.full.min.js}"></script>
+<script th:src="@{/js/rater.min.js}"></script>
+<script th:src="@{/js/jquery-steps.min.js}"></script>
+<script th:src="@{/js/plugins.js}"></script>
+<script th:src="@{/js/main.js}"></script><!-- main-js -->
+<script th:src="@{/js/jquery-countdown/jquery.plugin.min.js}"></script><!-- main-js -->
+<script th:src="@{/js/jquery-countdown/jquery.countdown.min.js}"></script><!-- main-js -->
+<script th:src="@{/js/moment.js}"></script>
+<script th:src="@{/js/assets/assets.js}"></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- Mirrored from htmlguru.net/qayima-html/dashboard-history.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Sep 2020 10:33:26 GMT -->
+<head>
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Specific Meta
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Qayima is a modern presentation HTML5 Listing & Directory Template.">
+    <meta name="keywords" content="HTML5, Template, Design, Listing, Directory, Listing Template"/>
+    <meta name="author" content="creative-wp">
+
+    <!-- Titles
+    ================================================== -->
+    <title>View Asset</title>
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+    <link rel="apple-touch-icon" sizes="72x72" th:href="@{/images/android-icon-72x72.png}">
+    <link rel="apple-touch-icon" sizes="114x114" th:href="@{/images/apple-icon-144x144.html}">
+
+    <!-- Custom Font
+    ================================================== -->
+    <link href="../../fonts.googleapis.com/cssc02f.css?family=Poppins:300,400,500,500i,600,700,800,900&amp;display=swap"
+          rel="stylesheet">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/simple-scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/css/trackpad-scroll-emulator.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/rangeslider.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.datetimepicker.min.css}">
+    <link rel="stylesheet" th:href="@{/css/chartist.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery-steps.css}">
+    <link rel="stylesheet" th:href="@{/css/fontawesome.all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/icomoon.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+
+    <script th:src="@{/js/modernizr.min.js}"></script>
+</head>
+
+<body>
+<!--********************************************************-->
+<!--********************* SITE CONTENT *********************-->
+<!--********************************************************-->
+<div class="site-content">
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        Start Dashboard Site Content
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <div class="dashboard-site-content">
+        <div class="dashboard-menu-area" th:replace="admin/admin_fragments :: leftSidePane">
+
+        </div>
+
+        <div class="dashboard-contant-area">
+            <!--~~~~~ Start dashboard Header ~~~~~-->
+            <header class="dashboard-header" th:replace="admin/admin_fragments :: header">
+
+            </header><!--~./ end dashboard header ~-->
+
+            <!--~~~~~ Start dashboard Contant ~~~~~-->
+            <div class="dashboard-contant dashboard-history-area">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-danger" th:if="${errors}" th:text="${errors}">
+
+                            </div>
+                            <div class="alert alert-success" th:if="${info}" th:text="${info}">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th width="30%">Name</th>
+                                        <td width="70%" th:text="${asset?.name}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th width="30%">Description</th>
+                                        <td width="70%" th:text="${asset?.description}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th width="30%">Start Price</th>
+                                        <td width="70%" th:text="${asset?.bidStartPrice}"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th width="30%">Category</th>
+                                        <td width="70%" th:text="${asset?.category?.name}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th width="30%">Start Date</th>
+                                        <td width="70%"
+                                            th:text="${T(zw.co.cassavasmartech.auctionsystem.common.Utils).format(asset.bidStartDate)}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th width="30%">End Date</th>
+                                        <td width="70%"
+                                            th:text="${T(zw.co.cassavasmartech.auctionsystem.common.Utils).format(asset.bidEndDate)}"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row col-md-12 p-4" >
+                            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
+                                <form id="" class="default-form signup-form" enctype="multipart/form-data"
+                                      style="width: 100%"
+                                      th:action="@{/admin/asset/add/image}" th:object="${fileResourceForm}"
+                                      method="post">
+                                    <input type="hidden" th:value="${asset.id}" name="id">
+                                    <div class="form-group">
+                                        <input type="file" accept=".jpg,.png" class="form-controllar" p-2 id="imageFile"
+                                               th:field="*{imageFile}">
+                                        <small class="text-danger" th:if="${#fields.hasErrors('imageFile')}"
+                                               th:errors="*{imageFile}">File Error</small>
+                                    </div>
+                                    <!--                                            /.form-group-->
+                                    <div class="form-btn-group">
+                                        <button type="submit" class="btn btn-default btn-create btn-back">
+                                            Add Image
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <!--image display-->
+                        <div class="row p-4">
+                            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12 mydivouter" th:each="imageName: ${asset?.imageNames}">
+                                <a th:href="@{|/assets/${asset.getId()}|}">
+                                    <div class="todo-item">
+                                        <div class="todo-thumbnail-area">
+                                            <figure class="item-thumb">
+                                                <img th:src="@{'/resources/images/' + ${imageName}}"
+                                                     th:alt="${asset?.description}">
+                                            </figure><!--./ item-thumb -->
+                                        </div><!--./ todo-overlay-info -->
+                                        <div class="todo-content">
+                                            <div class="card-footer">
+                                                <form th:action="@{/admin/asset/delete/image/{name}(name=${imageName})}" th:object="${asset}" method="post">
+                                                    <input type="hidden" th:value="${asset.id}" name="id">
+                                                    <button class="btn btn-danger btn-sm myb" type="submit"><i class="fa fa-trash"></i></button>
+
+                                                </form>
+
+
+                                            </div>
+                                            </div><!--./ todo-meta -->
+                                        </div><!--./ todo-content -->
+                                    </div>
+                                </a>
+                            </div><!--~./ end todo item ~-->
+
+                        </div>
+                        <!--image display end-->
+                    </div>
+                </div>
+            </div><!--~./ end dashboard contant ~-->
+        </div>
+    </div><!--~./ end dashboard site content ~-->
+</div>
+<!--~./ end site content ~-->
+
+
+<!-- All The JS Files
+================================================== -->
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/imagesloaded.pkgd.min.js}"></script>
+<script th:src="@{/js/jquery.validate.min.js}"></script>
+<script th:src="@{/js/jquery-validate.bootstrap-tooltip.min.js}"></script>
+<script th:src="@{/js/SyoTimer.js}"></script>
+<script th:src="@{/js/theia-sticky-sidebar.min.js}"></script>
+<script th:src="@{/js/ResizeSensor.min.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/isotope.pkgd.min.js}"></script>
+<script th:src="@{/js/packery-mode.pkgd.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/simple-scrollbar.min.js}"></script>
+<script th:src="@{/js/scrolla.jquery.min.js}"></script>
+<script th:src="@{/js/odometer.min.js}"></script>
+<script th:src="@{/js/jquery.sticky.js}"></script>
+<script th:src="@{/js/jquery.nav.js}"></script>
+<script th:src="@{/js/rangeslider.min.js}"></script>
+<script th:src="@{/js/jquery.trackpad-scroll-emulator.min.js}"></script>
+<script th:src="@{/js/jquery.datetimepicker.full.min.js}"></script>
+<script th:src="@{/js/rater.min.js}"></script>
+<script th:src="@{/js/jquery-steps.min.js}"></script>
+<script th:src="@{/js/plugins.js}"></script>
+<script th:src="@{/js/main.js}"></script><!-- main-js -->
+</body>
+
+<!-- Mirrored from htmlguru.net/qayima-html/dashboard-history.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Sep 2020 10:33:26 GMT -->
+</html>
